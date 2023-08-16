@@ -16,6 +16,8 @@
 							"",
 							"pm.test(\"Response status code is 200\", function () {",
 							"  pm.expect(pm.response.code).to.equal(200);",
+							"  const responseJson = pm.response.json();",
+							"  pm.expect(responseJson.status_code).to.eql(\"1\");",
 							"});"
 						],
 						"type": "text/javascript"
@@ -26,7 +28,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/business/merchant?test=abcd",
+					"raw": "{{base_url}}/business/merchant?test={{test}}",
 					"host": [
 						"{{base_url}}"
 					],
@@ -37,7 +39,7 @@
 					"query": [
 						{
 							"key": "test",
-							"value": "abcd"
+							"value": "{{test}}"
 						}
 					]
 				}
@@ -54,6 +56,8 @@
 							"",
 							"pm.test(\"Response status code is 200\", function () {",
 							"    pm.expect(pm.response.code).to.equal(200);",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.status_code).to.eql(\"1\");",
 							"});"
 						],
 						"type": "text/javascript"
@@ -64,11 +68,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/business/merchant?test=abcde",
+					"raw": "{{base_url}}/business/merchant?test=abcde",
 					"host": [
-						"localhost"
+						"{{base_url}}"
 					],
-					"port": "8080",
 					"path": [
 						"business",
 						"merchant"
@@ -93,6 +96,8 @@
 							"",
 							"pm.test(\"Response status code is 200\", function () {",
 							"    pm.expect(pm.response.code).to.equal(200);",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.status_code).to.eql(\"1\");",
 							"});",
 							""
 						],
@@ -104,11 +109,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/business/merchant?test=abcd",
+					"raw": "{{base_url}}/business/merchant?test={{test}}",
 					"host": [
-						"localhost"
+						"{{base_url}}"
 					],
-					"port": "8080",
 					"path": [
 						"business",
 						"merchant"
@@ -116,7 +120,7 @@
 					"query": [
 						{
 							"key": "test",
-							"value": "abcd"
+							"value": "{{test}}"
 						}
 					]
 				}
