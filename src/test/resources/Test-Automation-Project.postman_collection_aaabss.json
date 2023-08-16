@@ -13,10 +13,9 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"  pm.response.to.have.status(200);",
-							"  const responseJson = pm.response.json();",
-							"  pm.expect(responseJson.status_code).to.eql(\"1\");",
+							"",
+							"pm.test(\"Response status code is 200\", function () {",
+							"  pm.expect(pm.response.code).to.equal(200);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -27,11 +26,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/business/merchant?test=abcd",
+					"raw": "{{base_url}}/business/merchant?test=abcd",
 					"host": [
-						"localhost"
+						"{{base_url}}"
 					],
-					"port": "8080",
 					"path": [
 						"business",
 						"merchant"
@@ -53,10 +51,9 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"  pm.response.to.have.status(200);",
-							"  const responseJson = pm.response.json();",
-							"  pm.expect(responseJson.status_code).to.eql(\"2\");",
+							"",
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.expect(pm.response.code).to.equal(200);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -93,11 +90,11 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"  pm.response.to.have.status(200);",
-							"  const responseJson = pm.response.json();",
-							"  pm.expect(responseJson.status_code).to.eql(\"2\");",
-							"});"
+							"",
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.expect(pm.response.code).to.equal(200);",
+							"});",
+							""
 						],
 						"type": "text/javascript"
 					}

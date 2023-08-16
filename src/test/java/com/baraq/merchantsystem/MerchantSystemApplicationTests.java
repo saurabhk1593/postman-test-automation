@@ -20,7 +20,7 @@ public class MerchantSystemApplicationTests {
 	public void runApiTests() throws Exception {
 		// Use a process builder to execute Newman command
 		ProcessBuilder processBuilder = new ProcessBuilder();
-		processBuilder.command("newman", "run", "/Users/saurabhkumar/Repository/merchant-system/src/main/resources/postman-collection/Test-Automation-Project.postman_collection_updated_coll.json");
+		processBuilder.command("newman", "run", "/Users/saurabhkumar/Repository/merchant-system/src/test/resources/Test-Automation-Project.postman_collection_aaabss.json", "-e", "/Users/saurabhkumar/Repository/merchant-system/src/test/resources/dev.json", "-r", "htmlextra");
 
 		Process process = processBuilder.start();
 		int exitCode = process.waitFor();

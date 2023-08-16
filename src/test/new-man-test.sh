@@ -1,1 +1,0 @@
-newman run /Users/saurabhkumar/Repository/merchant-system/src/main/resources/postman-collection/my-local-test.json
