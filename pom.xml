@@ -14,9 +14,13 @@
 	<name>merchant-system</name>
 	<description>A Merchant-system is a comprehensive software application designed to facilitate the seamless management of various financial aspects between businesses and their customers. It serves as a centralized platform for essential operations such as merchant onboarding, secure money transactions, efficient payroll processing, secure card transaction, and responsive customer support.</description>
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -36,16 +40,85 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>sa.com.barraq</groupId>
+			<artifactId>kafka-client</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.avro</groupId>
+			<artifactId>avro</artifactId>
+			<version>1.11.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>testcontainers</artifactId>
+			<version>1.15.3</version> <!-- Adjust the version as needed -->
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>mysql</artifactId>
+			<version>1.15.3</version> <!-- Adjust the version as needed -->
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>1.15.3</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp -->
+		<dependency>
+			<groupId>com.squareup.okhttp3</groupId>
+			<artifactId>okhttp</artifactId>
+			<version>4.11.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.oracle.oci.sdk/oci-java-sdk-streaming -->
+		<!-- https://mvnrepository.com/artifact/com.oracle.oci.sdk/oci-java-sdk-addons-sasl -->
+		<dependency>
+			<groupId>com.oracle.oci.sdk</groupId>
+			<artifactId>oci-java-sdk-addons-sasl</artifactId>
+			<version>3.25.3</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.oracle.oci.sdk/oci-java-sdk-streaming -->
+		<dependency>
+			<groupId>com.oracle.oci.sdk</groupId>
+			<artifactId>oci-java-sdk-streaming</artifactId>
+			<version>3.25.2</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.0.0-M5</version>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>3.0.0-M5</version> <!-- Adjust the version as needed -->
+				<executions>
+					<execution>
+						<id>integration-test</id>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+						<configuration>
+							<systemPropertyVariables>
+								<server.port>8080</server.port>
+							</systemPropertyVariables>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
